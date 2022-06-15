@@ -104,7 +104,7 @@ export default Controller.extend(ModalFunctionality, {
       price: "",
       loc: "",
       condition: "",
-      images: null,
+      listingImages: A(),
     });
   },
 
