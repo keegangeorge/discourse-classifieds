@@ -9,6 +9,8 @@
 # transpile_js: true
 
 # Assets
+register_asset "stylesheets/common/common.scss"
+register_asset "stylesheets/mobile/mobile.scss", :mobile
 register_svg_icon "fa-ad"
 
 enabled_site_setting :discourse_classifieds_enabled
