@@ -43,7 +43,7 @@ export default Controller.extend(ModalFunctionality, {
     "listingImages"
   )
   listingOutput(title, description, price, loc, condition, images) {
-    let header = "[classifiedListing";
+    let header = "[listing";
     let output = "";
 
     if (title) {
@@ -81,7 +81,7 @@ export default Controller.extend(ModalFunctionality, {
       });
     }
 
-    output += "[/classifiedListing]\n";
+    output += "[/listing]\n";
     return output;
   },
 
