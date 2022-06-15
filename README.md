@@ -1,5 +1,5 @@
-# **Plugin Name** Plugin
+# Discourse Classifieds
 
-**Plugin Summary**
+A plugin to add a classifieds section/marketplace to your Discourse instance.
 
-For more information, please see: **url to meta topic**
+> ⚠️ This plugin is still in development and yet to be released.

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# name: discourse-plugin-name
-# about: TODO
+# name: discourse-classifieds
+# about: Adds a classifieds section to your Discourse instance
 # version: 0.0.1
-# authors: Discourse
-# url: TODO
+# authors: Keegan George
+# url: https://github.com/keegangeorge/discourse-classifieds
 # required_version: 2.7.0
 # transpile_js: true
 
