@@ -33,10 +33,13 @@ export default apiInitializer("1.2.0", (api) => {
   api.modifyClass("controller:composer", {
     pluginId: PLUGIN_ID,
 
-    @discourseComputed("siteSettings.discourse_classifieds_enabled")
-    canCreateClassified(classifiedsEnabled) {
+    @discourseComputed(
+      "siteSettings.discourse_classifieds_enabled",
+      "model.creatingTopic"
+    )
+    canCreateClassified(classifiedsEnabled, creatingTopic) {
       // TODO add minimum trust level and/or other options
-      return classifiedsEnabled;
+      return classifiedsEnabled && creatingTopic;
     },
 
     actions: {
@@ -54,7 +57,7 @@ export default apiInitializer("1.2.0", (api) => {
       action: "showClassifiedsBuilder",
       icon: "ad",
       label: "discourse_classifieds.ui_builder.title",
-      consition: "canCreateClassified",
+      condition: "canCreateClassified",
     };
   });
 });
