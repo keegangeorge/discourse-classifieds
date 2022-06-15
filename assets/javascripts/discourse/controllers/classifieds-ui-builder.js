@@ -40,6 +40,7 @@ export default Controller.extend(ModalFunctionality, {
 
   @action
   uploadDone(upload) {
+    //eslint-disable-next-line no-console
     console.log("upload file", upload);
   },
 });

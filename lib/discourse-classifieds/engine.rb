@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::DiscourseClassifieds
   PLUGIN_NAME ||= "discourse_classifieds"
 

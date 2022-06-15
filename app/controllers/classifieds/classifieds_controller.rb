@@ -5,7 +5,7 @@ module DiscourseClassifieds
     requires_plugin PLUGIN_NAME
 
     def index
-      category = SiteSetting.classifieds_category;
+      category = SiteSetting.classifieds_category
       topics = Topic.where(category: category)
       render json: topics
     end
