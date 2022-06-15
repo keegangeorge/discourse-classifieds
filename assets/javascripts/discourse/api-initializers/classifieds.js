@@ -35,11 +35,13 @@ export default apiInitializer("1.2.0", (api) => {
 
     @discourseComputed(
       "siteSettings.discourse_classifieds_enabled",
-      "model.creatingTopic"
+      "model.creatingTopic",
+      "model.editingPost",
+      "model.topicFirstPost"
     )
-    canCreateClassified(classifiedsEnabled, creatingTopic) {
+    canCreateClassified(classifiedsEnabled, creatingTopic, editing, firstPost) {
       // TODO add minimum trust level and/or other options
-      return classifiedsEnabled && creatingTopic;
+      return classifiedsEnabled && (creatingTopic || (editing && firstPost));
     },
 
     actions: {
