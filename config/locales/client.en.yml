@@ -4,6 +4,20 @@ en:
       title: "Classifieds"
       ui_builder:
         title: "Create a classified listing"
+        create: "Create Listing"
+        inputs:
+          title: "Item Name"
+          description: "Item Description"
+          price: "Price"
+          location: "Location"
+          condition: "Condition"
+          images: "Item Images"
+        condition_options:
+          new: "New"
+          like_new: "Used - Like New"
+          good: "Used - Good"
+          fair: "Used - Fair"
+
     filters:
       classifieds:
         help: "browse the classifieds"

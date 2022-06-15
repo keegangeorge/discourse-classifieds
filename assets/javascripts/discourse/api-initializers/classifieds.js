@@ -1,6 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import I18n from "I18n";
 import discourseComputed from "discourse-common/utils/decorators";
+import showModal from "discourse/lib/show-modal";
 
 export default apiInitializer("1.2.0", (api) => {
   const PLUGIN_ID = "discourse-classifieds";
@@ -40,7 +41,10 @@ export default apiInitializer("1.2.0", (api) => {
 
     actions: {
       showClassifiedsBuilder() {
-        // stub for now
+        showModal("classifieds-ui-builder").set(
+          "toolbarEvent",
+          this.toolbarEvent
+        );
       },
     },
   });
