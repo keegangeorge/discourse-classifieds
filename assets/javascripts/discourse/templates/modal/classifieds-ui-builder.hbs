@@ -7,7 +7,7 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.title"}}
     </label>
-    {{input value=classifiedTitle}}
+    {{input value=title}}
   </div>
 
   {{! ITEM DESCRIPTION }}
@@ -15,7 +15,7 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.description"}}
     </label>
-    {{textarea value=classifiedDescription}}
+    {{textarea value=description}}
   </div>
 
   {{! ITEM PRICE }}
@@ -37,7 +37,7 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.location"}}
     </label>
-    {{input value=classifiedLocation}}
+    {{input value=location}}
   </div>
 
   {{! ITEM CONDITION }}
@@ -47,7 +47,7 @@
     </label>
     {{combo-box
       content=conditionTypes
-      value=classifiedCondition
+      value=condition
       class="classified-condition"
       valueProperty="value"
       onChange=(action (mut classifiedCondition))

@@ -3,7 +3,7 @@ en:
     discourse_classifieds:
       title: "Classifieds"
       ui_builder:
-        title: "Create a classified listing"
+        title: "Create a marketplace listing"
         create: "Create Listing"
         inputs:
           title: "Item Name"
