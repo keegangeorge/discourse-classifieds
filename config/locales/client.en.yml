@@ -1,4 +1,7 @@
 en:
   js:
-    discourse_classifieds_enabled:
-      placeholder: placeholder
+    discourse_classifieds:
+      title: "Classifieds"
+    filters:
+      classifieds:
+        help: "browse the classifieds"

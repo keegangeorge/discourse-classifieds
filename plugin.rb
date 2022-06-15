@@ -11,4 +11,11 @@
 enabled_site_setting :discourse_classifieds_enabled
 
 after_initialize do
+  %w[
+    ../lib/discourse-classifieds/engine.rb
+    ../config/routes.rb
+    ../app/controllers/classifieds/classifieds_controller.rb
+  ].each do |key|
+    load File.expand_path(key, __FILE__)
+  end
 end

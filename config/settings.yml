@@ -2,3 +2,13 @@ plugins:
   discourse_classifieds_enabled:
     default: true
     client: true
+  classifieds_category:
+    type: category
+    default: ""
+    client: true
+  classifieds_add_to_top_menu:
+    default: true
+    client: true
+  classifieds_add_to_hamburger_menu:
+    default: true
+    client: true
