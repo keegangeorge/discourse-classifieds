@@ -55,7 +55,7 @@
   </div>
 
   {{! COVER IMAGE }}
-  <div class="input-group classified-images-label">
+  <div class="input-group classified-images">
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.images"}}
     </label>
@@ -63,7 +63,7 @@
       uploading=uploading
       done=(action "uploadDone")
       id="cover-image-uploader"
-      class="classified-images"
+      class="classified-images-button"
     }}
   </div>
 {{/d-modal-body}}
@@ -80,6 +80,6 @@
   {{d-button
     label="cancel"
     class="btn-flat"
-    action=(route-action "closeModal")
+    action=(action "cancelListingCreation")
   }}
 </div>

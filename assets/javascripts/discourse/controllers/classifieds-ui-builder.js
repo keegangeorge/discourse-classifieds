@@ -96,4 +96,21 @@ export default Controller.extend(ModalFunctionality, {
     const listingImages = this.listingImages;
     listingImages.pushObject(upload);
   },
+
+  resetProperties() {
+    return this.setProperties({
+      title: "",
+      description: "",
+      price: "",
+      loc: "",
+      condition: "",
+      images: null,
+    });
+  },
+
+  @action
+  cancelListingCreation() {
+    this.resetProperties();
+    this.send("closeModal");
+  },
 });
