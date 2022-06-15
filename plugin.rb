@@ -8,6 +8,9 @@
 # required_version: 2.7.0
 # transpile_js: true
 
+# Assets
+register_svg_icon "fa-ad"
+
 enabled_site_setting :discourse_classifieds_enabled
 
 after_initialize do

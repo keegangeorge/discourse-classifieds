@@ -29,4 +29,28 @@ export default apiInitializer("1.2.0", (api) => {
     });
   }
 
+  api.modifyClass("controller:composer", {
+    pluginId: PLUGIN_ID,
+
+    @discourseComputed("siteSettings.discourse_classifieds_enabled")
+    canCreateClassified(classifiedsEnabled) {
+      // TODO add minimum trust level and/or other options
+      return classifiedsEnabled;
+    },
+
+    actions: {
+      showClassifiedsBuilder() {
+        // stub for now
+      },
+    },
+  });
+
+  api.addToolbarPopupMenuOptionsCallback(() => {
+    return {
+      action: "showClassifiedsBuilder",
+      icon: "ad",
+      label: "discourse_classifieds.ui_builder.title",
+      consition: "canCreateClassified",
+    };
+  });
 });

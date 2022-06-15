@@ -2,6 +2,8 @@ en:
   js:
     discourse_classifieds:
       title: "Classifieds"
+      ui_builder:
+        title: "Create a classified listing"
     filters:
       classifieds:
         help: "browse the classifieds"
