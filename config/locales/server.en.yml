@@ -1,1 +1,3 @@
 en:
+  site_settings:
+    discourse_classifieds_enabled: "Classifieds Enabled"
