@@ -13,21 +13,21 @@ export default Controller.extend(ModalFunctionality, {
     const options = [
       {
         name: I18n.t("discourse_classifieds.ui_builder.condition_options.new"),
-        value: "new",
+        value: "New",
       },
       {
         name: I18n.t(
           "discourse_classifieds.ui_builder.condition_options.like_new"
         ),
-        value: "likeNew",
+        value: "Like New",
       },
       {
         name: I18n.t("discourse_classifieds.ui_builder.condition_options.good"),
-        value: "good",
+        value: "Good",
       },
       {
         name: I18n.t("discourse_classifieds.ui_builder.condition_options.fair"),
-        value: "fair",
+        value: "Fair",
       },
     ];
 
@@ -102,7 +102,7 @@ export default Controller.extend(ModalFunctionality, {
       title: "",
       description: "",
       price: "",
-      loc: "",
+      location: "",
       condition: "",
       listingImages: A(),
     });
