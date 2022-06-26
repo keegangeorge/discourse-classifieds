@@ -1,6 +1,5 @@
 en:
   site_settings:
     discourse_classifieds_enabled: "Classifieds Enabled"
-    classifieds_category: "The category with the classifieds posts"
     classifieds_add_to_top_menu: "Add top menu link to the classifieds page"
     classifieds_add_to_hamburger_menu: "Add hamburger menu link to the classifieds page"
