@@ -22,11 +22,6 @@ export default apiInitializer("1.2.0", (api) => {
     sold: "Sold",
   };
 
-  // ? TODO: Remove ?
-  function rerender() {
-    _glued.forEach((g) => g.queueRerender());
-  }
-
   if (!siteSettings.discourse_classifieds_enabled) {
     return;
   }
