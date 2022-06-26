@@ -7,4 +7,6 @@ module ::DiscourseClassifieds
     engine_name PLUGIN_NAME
     isolate_namespace DiscourseClassifieds
   end
+
+  class Error < StandardError; end
 end
