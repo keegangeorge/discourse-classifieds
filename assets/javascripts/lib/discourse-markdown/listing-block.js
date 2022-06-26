@@ -3,11 +3,12 @@ export function setup(helper) {
     return;
   }
 
-  helper.allowList(["div.classified-listing", "div.cover-image"]);
+  helper.allowList(["div.classified-listing", "div.listing-images"]);
 
   helper.registerOptions((opts, siteSettings) => {
     opts.features["listing"] = !!siteSettings.discourse_classifieds_enabled;
-    opts.features["coverImage"] = !!siteSettings.discourse_classifieds_enabled;
+    opts.features["listingImages"] =
+      !!siteSettings.discourse_classifieds_enabled;
   });
 
   helper.registerPlugin((md) => {
@@ -29,14 +30,12 @@ export function setup(helper) {
         return true;
       },
     });
-  });
 
-  // helper.registerPlugin((md) => {
-  //   md.block.bbcode.ruler.push("coverImage", {
-  //     tag: "coverImage",
-  //     wrap: "div",
-  //   });
-  // });
+    md.block.bbcode.ruler.push("photographs", {
+      tag: "photographs",
+      wrap: "div.listing-images",
+    });
+  });
 }
 
 function dasherize(input) {

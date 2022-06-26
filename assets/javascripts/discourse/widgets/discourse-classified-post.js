@@ -9,7 +9,7 @@ export default createWidget("discourse-classified-post", {
   html(attrs) {
     return h("div.classified-listing-post", [
       this.buildTitleBar(attrs),
-      h("p", "I need to get the post contentts and put it here."),
+      h("div", { innerHTML: attrs.description }),
     ]);
   },
 

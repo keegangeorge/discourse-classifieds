@@ -102,6 +102,34 @@ export default apiInitializer("1.2.0", (api) => {
     });
   }
 
+  function attachListingImages(elem, helper) {
+    let photographNodes = [...elem.querySelectorAll(".listing-images")];
+
+    if (!photographNodes.length || !helper) {
+      return;
+    }
+
+    const post = helper.getModel();
+    api.preventCloak(post.id);
+
+    photographNodes.forEach((photographNode) => {
+      const images = photographNode.getElementsByTagName("img");
+
+      const attrs = {
+        id: `discourse-classified-images-${post.id}`,
+        images,
+      };
+
+      const glue = new WidgetGlue(
+        "discourse-classified-post-images",
+        register,
+        attrs
+      );
+      glue.appendTo(photographNode);
+      _glued.push(glue);
+    });
+  }
+
   api.decorateCookedElement(attachListing, {
     onlyStream: true,
     id: "discourse-classifieds-post",

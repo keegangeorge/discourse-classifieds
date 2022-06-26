@@ -70,29 +70,32 @@ export default Controller.extend(ModalFunctionality, {
       output += `${description.trim()}\n`;
     }
 
-    if (images) {
-      images.forEach((image, index) => {
-        const buildImageFile = `![${image.file_name}|${image.width}x${image.height}](${image.short_url})\n`;
-        if (index === 0) {
-          output += `[coverImage]\n${buildImageFile}[/coverImage]\n`;
-        } else {
-          output += buildImageFile;
-        }
-      });
+    output += "[/listing]\n";
+
+    if (!images) {
+      return output;
     }
 
-    output += "[/listing]\n";
-    return output;
+    let imageOutput = "[photographs]\n";
+    images.forEach((image) => {
+      imageOutput += `![${image.file_name}|${image.width}x${image.height}](${image.short_url})\n`;
+    });
+    imageOutput += "[/photographs]\n";
+
+    return output + imageOutput;
   },
 
   @action
   createListing() {
     this.toolbarEvent.addText(this.listingOutput);
+    const topic = this.get("topic");
+    console.log("this:", this, topic);
     this.send("closeModal");
   },
 
   @action
   uploadDone(upload) {
+    console.log(upload);
     const listingImages = this.listingImages;
     listingImages.pushObject(upload);
   },
