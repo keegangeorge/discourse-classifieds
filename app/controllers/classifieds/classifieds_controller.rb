@@ -5,9 +5,10 @@ module DiscourseClassifieds
     requires_plugin PLUGIN_NAME
 
     def index
-      category = SiteSetting.classifieds_category
-      topics = Topic.where(category: category)
-      render json: topics
+      listingTopics = TopicCustomField.where(name: 'isClassifiedListing', value: 'true').pluck('topic_id')
+
+      topicData = Topic.where(id: listingTopics)
+      render json: topicData
     end
   end
 end

@@ -11,6 +11,18 @@ export default apiInitializer("1.2.0", (api) => {
   const register = getRegister(api);
   let _glued = [];
 
+  const CUSTOM_FIELDS = [
+    { name: "isClassifiedListing", type: "boolean" },
+    { name: "listingStatus", type: "string" },
+  ];
+
+  const LISTING_STATUSES = {
+    active: "Active",
+    pending: "Pending",
+    sold: "Sold",
+  };
+
+  // ? TODO: Remove ?
   function rerender() {
     _glued.forEach((g) => g.queueRerender());
   }
@@ -51,10 +63,20 @@ export default apiInitializer("1.2.0", (api) => {
       return classifiedsEnabled && (creatingTopic || (editing && firstPost));
     },
 
-    // save() {
-    //   const toolbarEvent = this.get("toolbarEvent");
-    //   // console.log("toolbarEvent", toolbarEvent, "this", this);
-    // },
+    save() {
+      const model = this.model;
+      const contents = model.reply;
+
+      // TODO: Improve check for listing (bbcode tokenization?)
+      if (contents.includes("[listing") && contents.includes("[/listing]")) {
+        model.set("isClassifiedListing", true);
+        model.set("listingStatus", LISTING_STATUSES.active);
+      } else {
+        model.set("isClassifiedListing", false);
+      }
+
+      return this._super(...arguments);
+    },
 
     actions: {
       showClassifiedsBuilder() {
@@ -93,10 +115,10 @@ export default apiInitializer("1.2.0", (api) => {
       const attrs = {
         id: `discourse-classified-${post.id}`,
         ...dataset,
+        description: listingNode.innerHTML,
       };
 
       const glue = new WidgetGlue("discourse-classified-post", register, attrs);
-      console.log(glue);
       glue.appendTo(listingNode);
       _glued.push(glue);
     });
@@ -133,5 +155,17 @@ export default apiInitializer("1.2.0", (api) => {
   api.decorateCookedElement(attachListing, {
     onlyStream: true,
     id: "discourse-classifieds-post",
+  });
+
+  api.decorateCookedElement(attachListingImages, {
+    onlyStream: true,
+    id: "discourse-classifieds-post-images",
+  });
+
+  // Serialize Custom Fields:
+  CUSTOM_FIELDS.forEach((field) => {
+    api.serializeOnCreate(field.name);
+    api.serializeToDraft(field.name);
+    api.serializeToTopic(field.name, `topic.${field.name}`);
   });
 });
