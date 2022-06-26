@@ -75,4 +75,30 @@ after_initialize do
   ].each do |key|
     load File.expand_path(key, __FILE__)
   end
+
+  # Add Topic Filters
+  TopicQuery.add_custom_filter(:isClassifiedListing) do |topics, query|
+    if query.options[:isClassifiedListing]
+      topics.where("topics.id in (
+      SELECT topic_id FROM topic_custom_fields
+      WHERE (name = 'isClassifiedListing')
+      AND value = '#{query.options[:isClassifiedListing]}'
+    )")
+    else
+      topics
+    end
+  end
+
+  TopicQuery.add_custom_filter(:listingStatus) do |topics, query|
+    if query.options[:listingStatus]
+      topics.where("topics.id in (
+    SELECT topic_id FROM topic_custom_fields
+    WHERE (name = 'listingStatus')
+    AND value = '#{query.options[:listingStatus]}'
+  )")
+    else
+      topics
+    end
+  end
+
 end
