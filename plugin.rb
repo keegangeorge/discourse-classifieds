@@ -20,7 +20,8 @@ enabled_site_setting :discourse_classifieds_enabled
 after_initialize do
   fields = [
   { name: 'isClassifiedListing', type: 'boolean' },
-  { name: 'listingStatus', type: 'string' }
+  { name: 'listingStatus', type: 'string' },
+  { name: "listingDetails", type: 'json' }
 ]
   # Custom Field Registration
   fields.each do |field|

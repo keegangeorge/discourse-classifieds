@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 import discourseComputed from "discourse-common/utils/decorators";
 import I18n from "I18n";
 import { A } from "@ember/array";
+import { getOwner } from "discourse-common/lib/get-owner";
 
 export default Controller.extend(ModalFunctionality, {
   listingImages: A(),
@@ -88,14 +89,23 @@ export default Controller.extend(ModalFunctionality, {
   @action
   createListing() {
     this.toolbarEvent.addText(this.listingOutput);
-    const topic = this.get("topic");
-    console.log("this:", this, topic);
+    const composer = getOwner(this).lookup("controller:composer");
+    const listingDetails = {
+      title: this.get("title"),
+      description: this.get("description"),
+      price: this.get("price"),
+      condition: this.get("condition"),
+      location: this.get("location"),
+      images: this.get("listingImages"),
+    };
+
+    composer.model.set("listingDetails", listingDetails);
+
     this.send("closeModal");
   },
 
   @action
   uploadDone(upload) {
-    console.log(upload);
     const listingImages = this.listingImages;
     listingImages.pushObject(upload);
   },

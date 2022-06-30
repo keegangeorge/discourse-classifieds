@@ -66,6 +66,36 @@
       class="classified-images-button"
     }}
   </div>
+  {{!-- <label
+    class="btn btn-default pad-left no-text
+      {{if uploadingOrProcessing 'disabled'}}"
+  >
+    {{d-icon "far-image"}}
+    {{pick-files-button
+      fileInputClass="hidden-upload-field"
+      acceptedFormatsOverride="image/*"
+      accesptedFormats=".jpeg"
+      onFilesPicked=(action "uploadDone")
+    }}
+  </label> --}}
+
+  {{!-- {{uppy-image-uploader
+    imageUrl=backgroundImageUrl
+    onUploadDone=(action "uploadDone")
+    type="category_background"
+    id="category-background-uploader"
+    allowMultiple="true"
+    multiple="true"
+  }} --}}
+  {{!-- <input
+    type="file"
+    id={{fileUploadElementId}}
+    class="wizard-composer-upload"
+    accept="image/*"
+    action="uploadDone"
+    multiple
+  /> --}}
+
 {{/d-modal-body}}
 
 <div class="modal-footer">

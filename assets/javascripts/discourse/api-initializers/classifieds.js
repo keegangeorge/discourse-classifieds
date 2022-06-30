@@ -14,6 +14,7 @@ export default apiInitializer("1.2.0", (api) => {
   const CUSTOM_FIELDS = [
     { name: "isClassifiedListing", type: "boolean" },
     { name: "listingStatus", type: "string" },
+    { name: "listingDetails", type: "json" },
   ];
 
   const LISTING_STATUSES = {

@@ -1,1 +1,7 @@
 <h1>Classifieds</h1>
+
+<div class="listing-gallery-container">
+  {{#each classifieds as |listing|}}
+    {{listing-item listing=listing}}
+  {{/each}}
+</div>

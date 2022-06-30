@@ -1,0 +1,64 @@
+@mixin listing-card-data-overlay($side: left) {
+  position: absolute;
+  padding: 0.25em 0.8em;
+  top: 0.25em;
+  font-weight: bold;
+  #{$side}: 0.25em;
+  color: var(--primary);
+  text-align: center;
+  border-radius: 0.15em;
+}
+
+.listing-gallery-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.listing-card {
+  background: var(--header_background);
+  color: var(--primary);
+  border: 1px solid var(--primary-low);
+  transition: box-shadow 0.25s ease;
+
+  &:hover {
+    box-shadow: shadow("card");
+  }
+
+  &-image {
+    position: relative;
+    img {
+      max-width: 300px;
+    }
+
+    .listing-price {
+      @include listing-card-data-overlay(left);
+      background-color: rgba(var(--secondary-rgb), 0.85);
+
+      &:before {
+        content: "$";
+      }
+    }
+
+    .listing-status {
+      @include listing-card-data-overlay(right);
+      background-color: var(--success-low);
+      color: var(--success);
+    }
+  }
+
+  &-body {
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+
+    .listing-title {
+      font-size: var(--font-up-1);
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .listing-location {
+      color: var(--primary-medium);
+    }
+  }
+}

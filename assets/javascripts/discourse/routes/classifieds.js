@@ -2,10 +2,11 @@ import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import DiscourseRoute from "discourse/routes/discourse";
 import I18n from "I18n";
+import Classifieds from "../models/classifieds";
 
 export default DiscourseRoute.extend({
   model() {
-    return ajax(`/classifieds.json`).catch(popupAjaxError);
+    return Classifieds.list();
   },
 
   titleToken() {
@@ -13,7 +14,6 @@ export default DiscourseRoute.extend({
   },
 
   setupController(controller, model) {
-    const { classifieds } = model;
-    controller.set("classifieds", classifieds);
+    controller.set("classifieds", model);
   },
 });

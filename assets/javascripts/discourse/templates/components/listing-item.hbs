@@ -1,0 +1,17 @@
+<a href="/t/{{listing.id}}">
+  <div class="listing-card-image">
+    <img src={{listing.coverImage.url}} alt="" />
+    <span class="listing-price">{{listing.price}}</span>
+    <span class="listing-status">{{listing.listingStatus}}</span>
+  </div>
+  <div class="listing-card-body">
+    <span
+      class="listing-title"
+      data-title={{listing.title}}
+    >{{listing.title}}</span>
+    <span class="listing-location">
+      {{d-icon "map-marker-alt"}}
+      {{listing.location}}
+    </span>
+  </div>
+</a>
