@@ -1,17 +1,30 @@
-<a href="/t/{{listing.id}}">
+<div class="listing-card">
   <div class="listing-card-image">
-    <img src={{listing.coverImage.url}} alt="" />
-    <span class="listing-price">{{listing.price}}</span>
-    <span class="listing-status">{{listing.listingStatus}}</span>
+    {{d-button
+      icon="chevron-left"
+      class="image-back-button"
+      action=(action "previousImage" this.currentImageIndex)
+    }}
+    <img src={{currentImage}} alt="" />
+    {{d-button
+      icon="chevron-right"
+      class="image-next-button"
+      action=(action "nextImage" this.currentImageIndex)
+    }}
+    <span class="listing-card-image-meta-data">{{this.imageMetaData}}</span>
+    <span class="listing-price">{{@listing.price}}</span>
+    <span class="listing-status">{{@listing.listingStatus}}</span>
   </div>
   <div class="listing-card-body">
-    <span
-      class="listing-title"
-      data-title={{listing.title}}
-    >{{listing.title}}</span>
-    <span class="listing-location">
-      {{d-icon "map-marker-alt"}}
-      {{listing.location}}
-    </span>
+    <a href="/t/{{@listing.id}}">
+      <span
+        class="listing-title"
+        data-title={{@listing.title}}
+      >{{@listing.title}}</span>
+      <span class="listing-location">
+        {{d-icon "map-marker-alt"}}
+        {{@listing.location}}
+      </span>
+    </a>
   </div>
-</a>
+</div>

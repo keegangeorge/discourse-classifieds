@@ -2,6 +2,6 @@
 
 <div class="listing-gallery-container">
   {{#each classifieds as |listing|}}
-    {{listing-item listing=listing}}
+    <ListingItem @listing={{listing}} />
   {{/each}}
 </div>

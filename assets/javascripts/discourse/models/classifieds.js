@@ -12,7 +12,8 @@ Classifieds.reopenClass({
         const classifieds = result.classifieds;
         classifieds.forEach((item) => {
           const listingDetails = JSON.parse(item.listingDetails);
-
+          const images = Object.values(listingDetails.images).flat();
+          console.log("IMAGES", images);
           classifiedsData.push({
             id: item.id,
             title: listingDetails.title,
@@ -20,7 +21,7 @@ Classifieds.reopenClass({
             location: listingDetails.location,
             description: listingDetails.description,
             condition: listingDetails.condition,
-            images: listingDetails.images,
+            images,
             coverImage: listingDetails.images[0],
             categoryId: item.category_id,
             topicTitle: item.fancy_title,
@@ -33,7 +34,6 @@ Classifieds.reopenClass({
             createdAt: item.created_at,
             likeCount: item.like_count,
           });
-
           result.classifiedsData = classifiedsData;
         });
         return result.classifiedsData;
