@@ -5,7 +5,7 @@
       class="image-back-button"
       action=(action "previousImage" this.currentImageIndex)
     }}
-    <img src={{currentImage}} alt="" />
+    <img src={{currentImage}} alt="">
     {{d-button
       icon="chevron-right"
       class="image-next-button"
@@ -13,16 +13,15 @@
     }}
     <span class="listing-card-image-meta-data">{{this.imageMetaData}}</span>
     <span class="listing-price">{{@listing.price}}</span>
-    <span
-      class="listing-status {{listingStatusColor}}"
-    >{{@listing.listingStatus}}</span>
+    <span class="listing-status {{listingStatusColor}}">
+      {{@listing.listingStatus}}
+    </span>
   </div>
   <div class="listing-card-body">
     <a href="/t/{{@listing.id}}">
-      <span
-        class="listing-title"
-        data-title={{@listing.title}}
-      >{{@listing.title}}</span>
+      <span class="listing-title" data-title={{@listing.title}}>
+        {{@listing.title}}
+      </span>
       <span class="listing-location">
         {{d-icon "map-marker-alt"}}
         {{@listing.location}}

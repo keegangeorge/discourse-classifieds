@@ -1,7 +1,5 @@
 import { acceptance, exists } from "discourse/tests/helpers/qunit-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
-import { displayClassifiedsBuilderButton } from "discourse/plugins/discourse-classifieds/helpers/display-classifieds-builder-button";
-import classifiedsFixture from "../fixtures/classifieds";
 import selectKit from "discourse/tests/helpers/select-kit-helper";
 import { click, visit } from "@ember/test-helpers";
 import { test } from "qunit";
@@ -19,7 +17,6 @@ acceptance("Classifieds Builder - classifieds are enabled", function (needs) {
   needs.hooks.beforeEach(() => clearPopupMenuOptionsCallback());
 
   test("create a topic", async function (assert) {
-    // await displayClassifiedsBuilderButton();
     await visit("/");
     await click("#create-topic");
     await click(".d-editor-button-bar .options");
@@ -33,7 +30,6 @@ acceptance("Classifieds Builder - classifieds are enabled", function (needs) {
 
   // TODO
   test("edit a topic", async function (assert) {
-    // await displayClassifiedsBuilderButton();
     await visit("/t/topic_with_classified_listing");
     await click("#post_1 .widget-button.edit");
     await click(".d-editor-button-bar .options");

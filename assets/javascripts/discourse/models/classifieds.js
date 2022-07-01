@@ -13,7 +13,7 @@ Classifieds.reopenClass({
         classifieds.forEach((item) => {
           const listingDetails = JSON.parse(item.listingDetails);
           const images = Object.values(listingDetails.images).flat();
-          console.log("IMAGES", images);
+
           classifiedsData.push({
             id: item.id,
             title: listingDetails.title,
