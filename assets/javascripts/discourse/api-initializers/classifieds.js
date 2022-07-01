@@ -13,6 +13,7 @@ export default apiInitializer("1.2.0", (api) => {
   const siteSettings = api.container.lookup("site-settings:main");
   const register = getRegister(api);
   let _glued = [];
+  const currentUser = api.getCurrentUser();
 
   if (!siteSettings.discourse_classifieds_enabled) {
     return;
@@ -172,6 +173,7 @@ export default apiInitializer("1.2.0", (api) => {
 
   api.addPostMenuButton("soldButton", (post) => {
     if (
+      post.user_id === currentUser.id &&
       topicRoute.currentModel.isClassifiedListing &&
       post.post_number === 1 &&
       (topicRoute.currentModel.listingStatus === LISTING_STATUSES.active ||
@@ -190,6 +192,7 @@ export default apiInitializer("1.2.0", (api) => {
 
   api.addPostMenuButton("pendingButton", (post) => {
     if (
+      post.user_id === currentUser.id &&
       topicRoute.currentModel.isClassifiedListing &&
       post.post_number === 1 &&
       topicRoute.currentModel.listingStatus === LISTING_STATUSES.active
@@ -207,6 +210,7 @@ export default apiInitializer("1.2.0", (api) => {
 
   api.addPostMenuButton("activeButton", (post) => {
     if (
+      post.user_id === currentUser.id &&
       topicRoute.currentModel.isClassifiedListing &&
       post.post_number === 1 &&
       (topicRoute.currentModel.listingStatus === LISTING_STATUSES.sold ||
