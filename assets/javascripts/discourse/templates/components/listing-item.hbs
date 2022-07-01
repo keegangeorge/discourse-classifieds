@@ -13,7 +13,9 @@
     }}
     <span class="listing-card-image-meta-data">{{this.imageMetaData}}</span>
     <span class="listing-price">{{@listing.price}}</span>
-    <span class="listing-status">{{@listing.listingStatus}}</span>
+    <span
+      class="listing-status {{listingStatusColor}}"
+    >{{@listing.listingStatus}}</span>
   </div>
   <div class="listing-card-body">
     <a href="/t/{{@listing.id}}">

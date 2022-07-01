@@ -17,7 +17,20 @@ en:
           like_new: "Used - Like New"
           good: "Used - Good"
           fair: "Used - Fair"
-
+      post_buttons:
+        status:
+          update:
+            title: "Status"
+            label: "Update Status"
+          sold:
+            title: "Sold"
+            label: "Mark Sold"
+          pending:
+            title: "Pending"
+            label: "Mark Pending"
+          active:
+            title: "Active"
+            label: "Make Available"
     filters:
       classifieds:
         help: "browse the classifieds"

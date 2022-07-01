@@ -1,0 +1,38 @@
+nav.post-controls {
+  .listing-status.widget-button {
+    color: var(--primary-medium);
+
+    .d-icon {
+      margin-right: 0.5rem;
+      color: var(--primary-medium);
+    }
+
+    &:hover,
+    .d-hover {
+      .d-icon {
+        color: var(--primary);
+      }
+    }
+  }
+
+  .status-sold.widget-button {
+    &:hover,
+    .d-hover {
+      @include status("sold");
+    }
+  }
+
+  .status-pending.widget-button {
+    &:hover,
+    .d-hover {
+      @include status("pending");
+    }
+  }
+
+  .status-active.widget-button {
+    &:hover,
+    .d-hover {
+      @include status("active");
+    }
+  }
+}

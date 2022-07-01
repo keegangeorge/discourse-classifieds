@@ -1,6 +1,7 @@
 import GlimmerComponent from "discourse/components/glimmer";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
+import { LISTING_STATUSES } from "../lib/constants";
 export default class ListingItem extends GlimmerComponent {
   @tracked currentImageIndex = 0;
   maxDisplay = this.args.listing.images.length;
@@ -16,6 +17,26 @@ export default class ListingItem extends GlimmerComponent {
 
   get imageMetaData() {
     return `Image ${this.currentImageIndexDisplay} of ${this.maxDisplay}`;
+  }
+
+  get listingStatusColor() {
+    const status = this.args.listing.listingStatus;
+    const prefix = "listing-status";
+    switch (status) {
+      case LISTING_STATUSES.active:
+        return `${prefix}-active`;
+        break;
+      case LISTING_STATUSES.pending:
+        return `${prefix}-pending`;
+      case LISTING_STATUSES.sold:
+        return `${prefix}-sold`;
+      default:
+        return `${prefix}-hidden`;
+        break;
+    }
+    if (status === LISTING_STATUSES.active) {
+      return "listing-status-active";
+    }
   }
 
   @action

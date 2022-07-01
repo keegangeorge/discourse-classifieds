@@ -9,3 +9,22 @@
     height: auto;
   }
 }
+
+.topic-title-listing-status {
+  font-size: var(--font-down-4);
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-left: 0.25rem;
+
+  &[data-status="Active"] {
+    @include status("active");
+  }
+
+  &[data-status="Sold"] {
+    @include status("sold");
+  }
+
+  &[data-status="Pending"] {
+    @include status("pending");
+  }
+}

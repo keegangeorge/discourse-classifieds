@@ -12,7 +12,7 @@
 register_asset "stylesheets/common/common.scss"
 register_asset "stylesheets/mobile/mobile.scss", :mobile
 
-icons = ["fa-ad", "fa-map-marker-alt"]
+icons = ["fa-ad", "fa-map-marker-alt", "fa-bullhorn", "fa-sync", "fa-dollar-sign"]
 icons.each { |icon| register_svg_icon icon } if respond_to?(:register_svg_icon)
 
 enabled_site_setting :discourse_classifieds_enabled

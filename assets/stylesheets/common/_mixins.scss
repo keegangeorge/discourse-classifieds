@@ -1,0 +1,27 @@
+@mixin status($type) {
+  @if ($type == "active") {
+    background-color: var(--success-low);
+    color: var(--success);
+    .d-icon {
+      color: var(--success);
+    }
+  } @else if ($type == "sold") {
+    background-color: var(--danger-low);
+    color: var(--danger);
+    .d-icon {
+      color: var(--danger);
+    }
+  } @else if ($type == "pending") {
+    background-color: var(--highlight-low);
+    color: var(--highlight-high);
+    .d-icon {
+      color: var(--highlight-high);
+    }
+  } @else {
+    background-color: var(--primary-low);
+    color: var(--primary-high);
+    .d-icon {
+      color: var(--primary-high);
+    }
+  }
+}
