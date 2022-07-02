@@ -1,0 +1,11 @@
+{{#if classifieds}}
+  <div class="user-activity-classifieds">
+    <div class="listing-gallery-container">
+      {{#each classifieds as |listing|}}
+        <ListingItem @listing={{listing}} />
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+  <EmptyState @title={{this.emptyState.title}} @body={{this.emptyState.body}} />
+{{/if}}

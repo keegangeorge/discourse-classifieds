@@ -11,7 +11,7 @@ This project follows [gitmoji](https://gitmoji.dev/) commit conventions.
 - [X] Add route showing classified listings in gallery image format
 - [X] Ability to create classified listings through a composer button
 - [ ] Change view style (gallery to list)
-- [ ] Add a user route to show topic list of listings by user.
+- [X] Add a user route to show topic list of listings by user.
 - [ ] Ability to sort classified listings by parameters (i.e. status/category)
 - [ ] Ability to search through listings (by status/tags/category, etc.)
 - [ ] Ability to filter listings by tags, category, and status

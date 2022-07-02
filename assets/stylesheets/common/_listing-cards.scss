@@ -25,6 +25,7 @@
   color: var(--primary);
   border: 1px solid var(--primary-low);
   transition: box-shadow 0.25s ease;
+  max-width: var(--listing-card-width);
 
   button {
     display: none;
@@ -124,4 +125,8 @@
       color: var(--primary-medium);
     }
   }
+}
+
+.user-activity-classifieds .listing-gallery-container {
+  --listing-card-width: 200px;
 }

@@ -31,6 +31,13 @@ en:
           active:
             title: "Active"
             label: "Make Available"
+      user_activity:
+        empty_state:
+          title: "Classified Listings"
+          body: "You have not created any listings yet. Create a topic with the %{icon} Create a marketplace listing button to add a new listing."
+        empty_state_others:
+          title: "Classified Listings"
+          body: "%{user} has not created any marketplace listings yet."
     filters:
       classifieds:
         help: "browse the classifieds"

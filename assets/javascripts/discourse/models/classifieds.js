@@ -5,8 +5,8 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 const Classifieds = EmberObject.extend({});
 
 Classifieds.reopenClass({
-  list() {
-    return ajax(`/classifieds.json`)
+  list(url) {
+    return ajax(url)
       .then((result) => {
         const classifiedsData = [];
         const classifieds = result.classifieds;

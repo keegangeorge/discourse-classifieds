@@ -4,7 +4,7 @@ import Classifieds from "../models/classifieds";
 
 export default DiscourseRoute.extend({
   model() {
-    return Classifieds.list();
+    return Classifieds.list("classifieds.json");
   },
 
   titleToken() {
