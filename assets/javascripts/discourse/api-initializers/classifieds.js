@@ -171,93 +171,95 @@ export default apiInitializer("1.2.0", (api) => {
 
   const topicRoute = api.container.lookup("route:topic");
 
-  api.addPostMenuButton("soldButton", (post) => {
-    if (
-      post.user_id === currentUser.id &&
-      topicRoute.currentModel.isClassifiedListing &&
-      post.post_number === 1 &&
-      (topicRoute.currentModel.listingStatus === LISTING_STATUSES.active ||
-        topicRoute.currentModel.listingStatus === LISTING_STATUSES.pending)
-    ) {
-      return {
-        action: "markSold",
-        icon: "dollar-sign",
-        className: "status-sold listing-status",
-        title: "discourse_classifieds.post_buttons.status.sold.title",
-        label: "discourse_classifieds.post_buttons.status.sold.label",
-        position: "last",
-      };
-    }
-  });
+  if (currentUser) {
+    api.addPostMenuButton("soldButton", (post) => {
+      if (
+        post.user_id === currentUser.id &&
+        topicRoute.currentModel.isClassifiedListing &&
+        post.post_number === 1 &&
+        (topicRoute.currentModel.listingStatus === LISTING_STATUSES.active ||
+          topicRoute.currentModel.listingStatus === LISTING_STATUSES.pending)
+      ) {
+        return {
+          action: "markSold",
+          icon: "dollar-sign",
+          className: "status-sold listing-status",
+          title: "discourse_classifieds.post_buttons.status.sold.title",
+          label: "discourse_classifieds.post_buttons.status.sold.label",
+          position: "last",
+        };
+      }
+    });
 
-  api.addPostMenuButton("pendingButton", (post) => {
-    if (
-      post.user_id === currentUser.id &&
-      topicRoute.currentModel.isClassifiedListing &&
-      post.post_number === 1 &&
-      topicRoute.currentModel.listingStatus === LISTING_STATUSES.active
-    ) {
-      return {
-        action: "markPending",
-        icon: "sync",
-        className: "status-pending listing-status",
-        title: "discourse_classifieds.post_buttons.status.pending.title",
-        label: "discourse_classifieds.post_buttons.status.pending.label",
-        position: "last",
-      };
-    }
-  });
+    api.addPostMenuButton("pendingButton", (post) => {
+      if (
+        post.user_id === currentUser.id &&
+        topicRoute.currentModel.isClassifiedListing &&
+        post.post_number === 1 &&
+        topicRoute.currentModel.listingStatus === LISTING_STATUSES.active
+      ) {
+        return {
+          action: "markPending",
+          icon: "sync",
+          className: "status-pending listing-status",
+          title: "discourse_classifieds.post_buttons.status.pending.title",
+          label: "discourse_classifieds.post_buttons.status.pending.label",
+          position: "last",
+        };
+      }
+    });
 
-  api.addPostMenuButton("activeButton", (post) => {
-    if (
-      post.user_id === currentUser.id &&
-      topicRoute.currentModel.isClassifiedListing &&
-      post.post_number === 1 &&
-      (topicRoute.currentModel.listingStatus === LISTING_STATUSES.sold ||
-        topicRoute.currentModel.listingStatus === LISTING_STATUSES.pending)
-    ) {
-      return {
-        action: "markActive",
-        icon: "bullhorn",
-        className: "status-active listing-status",
-        title: "discourse_classifieds.post_buttons.status.active.title",
-        label: "discourse_classifieds.post_buttons.status.active.label",
-        position: "last",
-      };
-    }
-  });
+    api.addPostMenuButton("activeButton", (post) => {
+      if (
+        post.user_id === currentUser.id &&
+        topicRoute.currentModel.isClassifiedListing &&
+        post.post_number === 1 &&
+        (topicRoute.currentModel.listingStatus === LISTING_STATUSES.sold ||
+          topicRoute.currentModel.listingStatus === LISTING_STATUSES.pending)
+      ) {
+        return {
+          action: "markActive",
+          icon: "bullhorn",
+          className: "status-active listing-status",
+          title: "discourse_classifieds.post_buttons.status.active.title",
+          label: "discourse_classifieds.post_buttons.status.active.label",
+          position: "last",
+        };
+      }
+    });
 
-  // TODO: Find a way to refresh route rather than hard window reload:
-  api.attachWidgetAction("post", "markSold", function () {
-    const topicId = this.model.topic.id;
+    // TODO: Find a way to refresh route rather than hard window reload:
+    api.attachWidgetAction("post", "markSold", function () {
+      const topicId = this.model.topic.id;
 
-    ajax(`/t/-/${topicId}`, {
-      type: "PUT",
-      data: { listingStatus: LISTING_STATUSES.sold },
-    })
-      .then(() => window.location.reload())
-      .catch(popupAjaxError);
-  });
+      ajax(`/t/-/${topicId}`, {
+        type: "PUT",
+        data: { listingStatus: LISTING_STATUSES.sold },
+      })
+        .then(() => window.location.reload())
+        .catch(popupAjaxError);
+    });
 
-  api.attachWidgetAction("post", "markActive", function () {
-    const topicId = this.model.topic.id;
+    api.attachWidgetAction("post", "markActive", function () {
+      const topicId = this.model.topic.id;
 
-    ajax(`/t/-/${topicId}`, {
-      type: "PUT",
-      data: { listingStatus: LISTING_STATUSES.active },
-    })
-      .then(() => window.location.reload())
-      .catch(popupAjaxError);
-  });
+      ajax(`/t/-/${topicId}`, {
+        type: "PUT",
+        data: { listingStatus: LISTING_STATUSES.active },
+      })
+        .then(() => window.location.reload())
+        .catch(popupAjaxError);
+    });
 
-  api.attachWidgetAction("post", "markPending", function () {
-    const topicId = this.model.topic.id;
+    api.attachWidgetAction("post", "markPending", function () {
+      const topicId = this.model.topic.id;
 
-    ajax(`/t/-/${topicId}`, {
-      type: "PUT",
-      data: { listingStatus: LISTING_STATUSES.pending },
-    })
-      .then(() => window.location.reload())
-      .catch(popupAjaxError);
-  });
+      ajax(`/t/-/${topicId}`, {
+        type: "PUT",
+        data: { listingStatus: LISTING_STATUSES.pending },
+      })
+        .then(() => window.location.reload())
+        .catch(popupAjaxError);
+    });
+  }
 });
