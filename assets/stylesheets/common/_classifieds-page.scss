@@ -1,0 +1,20 @@
+header.classifieds-page-header {
+  h1 {
+    color: var(--primary);
+  }
+
+  p {
+    color: var(--primary-medium);
+  }
+
+  .classifieds-toolbar {
+    background-color: var(--primary-low);
+    padding: 0.5em;
+    display: flex;
+    margin-block: 1rem;
+
+    .classifieds-view-options {
+      margin-left: auto;
+    }
+  }
+}

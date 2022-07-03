@@ -1,7 +1,41 @@
-<h1>Classifieds</h1>
+<header class="classifieds-page-header">
+  <h1>{{d-icon "store"}} {{i18n "discourse_classifieds.page_title"}}</h1>
+  <p>{{i18n "discourse_classifieds.page_description"}}</p>
 
-<div class="listing-gallery-container">
-  {{#each classifieds as |listing|}}
-    <ListingItem @listing={{listing}} />
-  {{/each}}
-</div>
+  <div class="classifieds-toolbar">
+    <div class="classifieds-view-options">
+      {{d-button
+        icon=this.viewAttributes.icon
+        title=this.viewAttributes.title
+        action=(action "toggleView")
+      }}
+    </div>
+  </div>
+</header>
+
+{{#if (eq this.viewStyle "grid")}}
+  <div class="listing-gallery-container">
+    {{#each classifieds as |listing|}}
+      <ListingItem @listing={{listing}} />
+    {{/each}}
+  </div>
+{{else if (eq this.viewStyle "list")}}
+  <table class="table classified-listing-table">
+    <thead>
+      <tr>
+        <th class="listing-cover-image-header">Cover Image</th>
+        <th class="listing-title-header">Title</th>
+        <th class="listing-price-header">Price</th>
+        <th class="listing-status-header">Status</th>
+        <th class="listing-location-header">Location</th>
+        <th class="listing-condition-header">Condition</th>
+        <th class="listing-creator-header">Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each classifieds as |listing|}}
+        {{listing-table-item listing=listing}}
+      {{/each}}
+    </tbody>
+  </table>
+{{/if}}

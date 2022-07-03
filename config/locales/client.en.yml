@@ -2,6 +2,8 @@ en:
   js:
     discourse_classifieds:
       title: "Classifieds"
+      page_title: "Marketplace"
+      page_description: "View for sale listings created by other members on the forum."
       ui_builder:
         title: "Create a marketplace listing"
         create: "Create Listing"
@@ -38,6 +40,10 @@ en:
         empty_state_others:
           title: "Classified Listings"
           body: "%{user} has not created any marketplace listings yet."
+      toolbar:
+        view_options:
+          list: "List View"
+          grid: "Grid View"
     filters:
       classifieds:
         help: "browse the classifieds"

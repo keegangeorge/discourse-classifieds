@@ -1,0 +1,17 @@
+.listing-status {
+  &-active {
+    @include status("active");
+  }
+
+  &-pending {
+    @include status("pending");
+  }
+
+  &-sold {
+    @include status("sold");
+  }
+
+  &-hidden {
+    display: none;
+  }
+}

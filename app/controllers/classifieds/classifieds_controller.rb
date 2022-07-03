@@ -49,9 +49,13 @@ module DiscourseClassifieds
           field_items[field.name] = field.value
         end
 
+        user = User.find_by(id: topic.user_id)
+
         topic_with_classified_fields = {
           **topic.attributes,
-          **field_items
+          **field_items,
+          user: user,
+          user_avatar: user.avatar_template()
         }
 
         all_data.push(topic_with_classified_fields)

@@ -1,0 +1,36 @@
+.classified-listing-table {
+  width: 100%;
+  tr {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--primary-low);
+    }
+  }
+
+  .listing-table-item {
+    &.listing-cover-image {
+      img {
+        max-width: 150px;
+      }
+    }
+
+    &.listing-title {
+      font-weight: bold;
+      font-size: var(--font-up-1);
+    }
+
+    &.listing-price {
+      // TODO remove and make dynamic currency
+      &:before {
+        content: "$";
+      }
+    }
+
+    &.listing-status {
+      span {
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+      }
+    }
+  }
+}

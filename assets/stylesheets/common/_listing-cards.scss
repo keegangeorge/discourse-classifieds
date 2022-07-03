@@ -78,22 +78,6 @@
 
     .listing-status {
       @include listing-card-data-overlay(right);
-
-      &-active {
-        @include status("active");
-      }
-
-      &-pending {
-        @include status("pending");
-      }
-
-      &-sold {
-        @include status("sold");
-      }
-
-      &-hidden {
-        display: none;
-      }
     }
 
     &-meta-data {

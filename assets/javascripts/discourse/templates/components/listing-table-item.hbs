@@ -1,0 +1,17 @@
+<tr {{on "click" (fn routeToTopic @listing.id)}}>
+  <td class="listing-table-item listing-cover-image">
+    <img src="{{@listing.coverImage.url}}" alt="" />
+  </td>
+  <td class="listing-table-item listing-title">{{@listing.title}}</td>
+  <td class="listing-table-item listing-price">{{@listing.price}}</td>
+  <td class="listing-table-item listing-status">
+    <span class={{this.listingStatusColor}}>{{@listing.listingStatus}}</span>
+  </td>
+  <td class="listing-table-item listing-location">{{@listing.location}}</td>
+  <td class="listing-table-item listing-condition">{{@listing.condition}}</td>
+  <td class="listing-table-item listing-user">
+    <a href={{@listing.user.path}} data-user-card={{@listing.user.username}}>
+      <img class="avatar" loading="lazy" src={{this.userAvatar}} alt="" />
+    </a>
+  </td>
+</tr>

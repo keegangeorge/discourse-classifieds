@@ -3,3 +3,4 @@ en:
     discourse_classifieds_enabled: "Classifieds Enabled"
     classifieds_add_to_top_menu: "Add top menu link to the classifieds page"
     classifieds_add_to_hamburger_menu: "Add hamburger menu link to the classifieds page"
+    classifieds_default_view: "Select the default view style items for classifieds listings to appear on the page."
