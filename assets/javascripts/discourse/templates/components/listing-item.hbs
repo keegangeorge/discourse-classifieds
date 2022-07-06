@@ -1,19 +1,19 @@
 <div class="listing-card">
   <div class="listing-card-image">
-    {{d-button
-      icon="chevron-left"
-      class="image-back-button"
-      action=(action "previousImage" this.currentImageIndex)
-    }}
-    <img src={{currentImage}} alt="" />
-    {{d-button
-      icon="chevron-right"
-      class="image-next-button"
-      action=(action "nextImage" this.currentImageIndex)
-    }}
+    <DButton
+      @icon="chevron-left"
+      @class="image-back-button"
+      @action={{action "previousImage" this.currentImageIndex}}
+    />
+    <img src={{this.currentImage}} alt="" />
+    <DButton
+      @icon="chevron-right"
+      @class="image-next-button"
+      @action={{action "nextImage" this.currentImageIndex}}
+    />
     <span class="listing-card-image-meta-data">{{this.imageMetaData}}</span>
     <span class="listing-price">{{@listing.price}}</span>
-    <span class="listing-status {{listingStatusColor}}">
+    <span class="listing-status {{this.listingStatusColor}}">
       {{@listing.listingStatus}}
     </span>
   </div>

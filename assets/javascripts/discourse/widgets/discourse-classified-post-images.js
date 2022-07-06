@@ -9,7 +9,20 @@ export default createWidget("discourse-classified-post-images", {
   html(attrs) {
     const contents = [];
     for (const image of attrs.images) {
-      contents.push(new RawHtml({ html: image }));
+      const lightboxImage = h(
+        "a.lightbox",
+        {
+          attributes: {
+            href: image.src,
+            "data-download-href": image.src,
+            title: image.alt,
+          },
+        },
+        new RawHtml({ html: image })
+      );
+
+      const lightbox = h("div.lightbox-wrapper", lightboxImage);
+      contents.push(lightbox);
     }
 
     return h("div.classified-listing-post-gallery", contents);

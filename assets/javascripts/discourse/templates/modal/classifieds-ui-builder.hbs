@@ -1,13 +1,13 @@
-{{#d-modal-body
-  title="discourse_classifieds.ui_builder.title"
-  class="classifieds-ui-builder"
-}}
+<DModalBody
+  @title="discourse_classifieds.ui_builder.title"
+  @class="classifieds-ui-builder"
+>
   {{! ITEM TITLE }}
   <div class="input-group classified-title">
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.title"}}
     </label>
-    {{input value=title}}
+    <Input @value={{this.title}} />
   </div>
 
   {{! ITEM DESCRIPTION }}
@@ -15,7 +15,7 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.description"}}
     </label>
-    {{textarea value=description}}
+    <Textarea @value={{this.description}} />
   </div>
 
   {{! ITEM PRICE }}
@@ -23,13 +23,13 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.price"}}
     </label>
-    {{input
-      type="number"
-      value=price
-      valueProperty="value"
-      class="price-options-min"
-      min=0
-    }}
+    <Input
+      @type="number"
+      @value={{this.price}}
+      @valueProperty="value"
+      @class="price-options-min"
+      @min="0"
+    />
   </div>
 
   {{! LOCATION }}
@@ -37,7 +37,7 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.location"}}
     </label>
-    {{input value=location}}
+    <Input @value={{this.location}} />
   </div>
 
   {{! ITEM CONDITION }}
@@ -45,13 +45,13 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.condition"}}
     </label>
-    {{combo-box
-      content=conditionTypes
-      value=condition
-      class="classified-condition"
-      valueProperty="value"
-      onChange=(action (mut condition))
-    }}
+    <ComboBox
+      @content={{this.conditionTypes}}
+      @value={{this.condition}}
+      @class="classified-condition"
+      @valueProperty="value"
+      @onChange={{action (mut this.condition)}}
+    />
   </div>
 
   {{! COVER IMAGE }}
@@ -59,57 +59,28 @@
     <label class="input-group-label">
       {{i18n "discourse_classifieds.ui_builder.inputs.images"}}
     </label>
-    {{images-uploader
-      uploading=uploading
-      done=(action "uploadDone")
-      id="cover-image-uploader"
-      class="classified-images-button"
-    }}
+    <ImagesUploader
+      @uploading={{this.uploading}}
+      @done={{action "uploadDone"}}
+      @id="cover-image-uploader"
+      @class="classified-images-button"
+      @type="image"
+    />
   </div>
-  {{!-- <label
-    class="btn btn-default pad-left no-text
-      {{if uploadingOrProcessing 'disabled'}}"
-  >
-    {{d-icon "far-image"}}
-    {{pick-files-button
-      fileInputClass="hidden-upload-field"
-      acceptedFormatsOverride="image/*"
-      accesptedFormats=".jpeg"
-      onFilesPicked=(action "uploadDone")
-    }}
-  </label> --}}
-
-  {{!-- {{uppy-image-uploader
-    imageUrl=backgroundImageUrl
-    onUploadDone=(action "uploadDone")
-    type="category_background"
-    id="category-background-uploader"
-    allowMultiple="true"
-    multiple="true"
-  }} --}}
-  {{!-- <input
-    type="file"
-    id={{fileUploadElementId}}
-    class="wizard-composer-upload"
-    accept="image/*"
-    action="uploadDone"
-    multiple
-  /> --}}
-
-{{/d-modal-body}}
+</DModalBody>
 
 <div class="modal-footer">
-  {{d-button
-    action=(action "createListing")
-    icon="plus"
-    class="btn-primary"
-    label="discourse_classifieds.ui_builder.create"
-    disabled=disableInsert
-  }}
+  <DButton
+    @action={{action "createListing"}}
+    @icon="plus"
+    @class="btn-primary"
+    @label="discourse_classifieds.ui_builder.create"
+    @disabled={{this.disableInsert}}
+  />
 
-  {{d-button
-    label="cancel"
-    class="btn-flat"
-    action=(action "cancelListingCreation")
-  }}
+  <DButton
+    @label="cancel"
+    @class="btn-flat"
+    @action={{action "cancelListingCreation"}}
+  />
 </div>

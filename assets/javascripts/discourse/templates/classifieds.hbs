@@ -4,11 +4,11 @@
 
   <div class="classifieds-toolbar">
     <div class="classifieds-view-options">
-      {{d-button
-        icon=this.viewAttributes.icon
-        title=this.viewAttributes.title
-        action=(action "toggleView")
-      }}
+      <DButton
+        @icon={{this.viewAttributes.icon}}
+        @title={{this.viewAttributes.title}}
+        @action={{action "toggleView"}}
+      />
     </div>
   </div>
 </header>
@@ -23,18 +23,32 @@
   <table class="table classified-listing-table">
     <thead>
       <tr>
-        <th class="listing-cover-image-header">Cover Image</th>
-        <th class="listing-title-header">Title</th>
-        <th class="listing-price-header">Price</th>
-        <th class="listing-status-header">Status</th>
-        <th class="listing-location-header">Location</th>
-        <th class="listing-condition-header">Condition</th>
-        <th class="listing-creator-header">Creator</th>
+        <th class="listing-cover-image-header">
+          {{i18n "discourse_classifieds.listing_table.header.image"}}
+        </th>
+        <th class="listing-title-header">
+          {{i18n "discourse_classifieds.listing_table.header.title"}}
+        </th>
+        <th class="listing-price-header">
+          {{i18n "discourse_classifieds.listing_table.header.price"}}
+        </th>
+        <th class="listing-status-header">
+          {{i18n "discourse_classifieds.listing_table.header.status"}}
+        </th>
+        <th class="listing-location-header">
+          {{i18n "discourse_classifieds.listing_table.header.location"}}
+        </th>
+        <th class="listing-condition-header">
+          {{i18n "discourse_classifieds.listing_table.header.condition"}}
+        </th>
+        <th class="listing-creator-header">
+          {{i18n "discourse_classifieds.listing_table.header.creator"}}
+        </th>
       </tr>
     </thead>
     <tbody>
       {{#each classifieds as |listing|}}
-        {{listing-table-item listing=listing}}
+        <ListingTableItem @listing={{listing}} />
       {{/each}}
     </tbody>
   </table>

@@ -1,13 +1,13 @@
 import Controller from "@ember/controller";
-import ModalFunctionality from "discourse/mixins/modal-functionality";
 import { action } from "@ember/object";
 import discourseComputed from "discourse-common/utils/decorators";
 import I18n from "I18n";
 import { A } from "@ember/array";
 import { getOwner } from "discourse-common/lib/get-owner";
+import { tracked } from "@glimmer/tracking";
 
-export default Controller.extend(ModalFunctionality, {
-  listingImages: A(),
+export default class extends Controller {
+  @tracked listingImages = A();
 
   @discourseComputed
   conditionTypes() {
@@ -33,7 +33,7 @@ export default Controller.extend(ModalFunctionality, {
     ];
 
     return options;
-  },
+  }
 
   @discourseComputed(
     "title",
@@ -84,7 +84,7 @@ export default Controller.extend(ModalFunctionality, {
     imageOutput += "[/photographs]\n";
 
     return output + imageOutput;
-  },
+  }
 
   @action
   createListing() {
@@ -102,13 +102,13 @@ export default Controller.extend(ModalFunctionality, {
     composer.model.set("listingDetails", listingDetails);
 
     this.send("closeModal");
-  },
+  }
 
   @action
   uploadDone(upload) {
     const listingImages = this.listingImages;
     listingImages.pushObject(upload);
-  },
+  }
 
   resetProperties() {
     return this.setProperties({
@@ -119,11 +119,11 @@ export default Controller.extend(ModalFunctionality, {
       condition: "",
       listingImages: A(),
     });
-  },
+  }
 
   @action
   cancelListingCreation() {
     this.resetProperties();
     this.send("closeModal");
-  },
-});
+  }
+}

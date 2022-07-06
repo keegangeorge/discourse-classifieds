@@ -50,6 +50,15 @@ en:
         post_count:
           one: "listing created"
           other: "listings created"
+      listing_table:
+        header:
+          image: "Cover Image"
+          title: "Title"
+          price: "Price"
+          status: "Status"
+          location: "Location"
+          condition: "Condition"
+          creator: "Creator"
     filters:
       classifieds:
         help: "browse the classifieds"

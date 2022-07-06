@@ -20,7 +20,9 @@ View all forum listings in one place (`/classifieds`):
 
 ![topic](.github/images/listings.png)
 
-## Feature To Do List
+## TODOS
+
+### FEATURES
 
 - [X] Add route showing classified listings in gallery image format
 - [X] Ability to create classified listings through a composer button
@@ -30,3 +32,8 @@ View all forum listings in one place (`/classifieds`):
 - [ ] Ability to search through listings (by status/tags/category, etc.)
 - [ ] Ability to filter listings by tags, category, and status
 - [ ] Use Modern code (i.e. convert to angle brackets things like `{{d-button}}` to `<DButton>`)
+
+
+### BUGS
+
+- [ ] Upating a listing does not update the data for the cards/table items.

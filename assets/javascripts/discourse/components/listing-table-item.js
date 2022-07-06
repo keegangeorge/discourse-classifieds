@@ -1,5 +1,4 @@
 import GlimmerComponent from "discourse/components/glimmer";
-import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { LISTING_STATUSES } from "../lib/constants";
 import DiscourseURL from "discourse/lib/url";
