@@ -44,6 +44,9 @@ en:
         view_options:
           list: "List View"
           grid: "Grid View"
+      statuses:
+        classified: "are classified listings"
+
     filters:
       classifieds:
         help: "browse the classifieds"

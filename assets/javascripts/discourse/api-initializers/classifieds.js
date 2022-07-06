@@ -262,4 +262,15 @@ export default apiInitializer("1.2.0", (api) => {
         .catch(popupAjaxError);
     });
   }
+
+  api.addAdvancedSearchOptions({
+    statusOptions: [
+      {
+        name: I18n.t("discourse_classifieds.statuses.classified"),
+        value: "classified",
+      },
+    ],
+  });
+
+  api.addSearchSuggestion("status:classified");
 });

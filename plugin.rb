@@ -102,4 +102,19 @@ after_initialize do
     end
   end
 
+  # Advaanced Search Filter
+  require_dependency 'search'
+
+  if Search.respond_to? :advanced_filter
+    Search.advanced_filter(/status:classified/) do |posts|
+      posts.where("topics.id IN (
+        SELECT tc.topic_id
+        FROM topic_custom_fields tc
+        WHERE tc.name = 'isClassifiedListing' AND
+                        tc.value = 'true'
+        )")
+
+    end
+  end
+
 end
