@@ -39,6 +39,10 @@ export default class ListingItem extends GlimmerComponent {
     }
   }
 
+  get userAvatar() {
+    return this.args.listing.userAvatar.replace("{size}", "25");
+  }
+
   @action
   nextImage(index) {
     if (index < this.max) {
