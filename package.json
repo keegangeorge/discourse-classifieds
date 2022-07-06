@@ -1,8 +1,8 @@
 {
-  "name": "discourse-plugin-name",
+  "name": "discourse-classifieds",
   "version": "0.0.1",
   "repository": "https://github.com/keegangeorge/discourse-classifieds",
-  "author": "Discourse",
+  "author": "Keegan George",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
     "eslint-config-discourse": "^3.1.0"
