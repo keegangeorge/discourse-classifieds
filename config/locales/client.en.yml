@@ -46,7 +46,10 @@ en:
           grid: "Grid View"
       statuses:
         classified: "are classified listings"
-
+      user_summary:
+        post_count:
+          one: "listing created"
+          other: "listings created"
     filters:
       classifieds:
         help: "browse the classifieds"
