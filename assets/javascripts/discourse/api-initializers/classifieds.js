@@ -171,7 +171,20 @@ export default apiInitializer("1.2.0", (api) => {
 
   const topicRoute = api.container.lookup("route:topic");
 
+  function updateListingStatus(topicId, status) {
+    return (
+      ajax(`/t/-/${topicId}`, {
+        type: "PUT",
+        data: { listingStatus: status },
+      })
+        // TODO: Find a way to refresh route rather than hard window reload:
+        .then(() => window.location.reload())
+        .catch(popupAjaxError)
+    );
+  }
+
   if (currentUser) {
+    // * TODO Cleanup resused code
     api.addPostMenuButton("soldButton", (post) => {
       if (
         post.user_id === currentUser.id &&
@@ -228,38 +241,12 @@ export default apiInitializer("1.2.0", (api) => {
       }
     });
 
-    // TODO: Find a way to refresh route rather than hard window reload:
-    api.attachWidgetAction("post", "markSold", function () {
-      const topicId = this.model.topic.id;
-
-      ajax(`/t/-/${topicId}`, {
-        type: "PUT",
-        data: { listingStatus: LISTING_STATUSES.sold },
-      })
-        .then(() => window.location.reload())
-        .catch(popupAjaxError);
-    });
-
-    api.attachWidgetAction("post", "markActive", function () {
-      const topicId = this.model.topic.id;
-
-      ajax(`/t/-/${topicId}`, {
-        type: "PUT",
-        data: { listingStatus: LISTING_STATUSES.active },
-      })
-        .then(() => window.location.reload())
-        .catch(popupAjaxError);
-    });
-
-    api.attachWidgetAction("post", "markPending", function () {
-      const topicId = this.model.topic.id;
-
-      ajax(`/t/-/${topicId}`, {
-        type: "PUT",
-        data: { listingStatus: LISTING_STATUSES.pending },
-      })
-        .then(() => window.location.reload())
-        .catch(popupAjaxError);
+    Object.entries(LISTING_STATUSES).forEach((status) => {
+      // eslint-disable-next-line no-unused-vars
+      const [key, value] = status;
+      return api.attachWidgetAction("post", `mark${value}`, function () {
+        return updateListingStatus(this.model.topic.id, value);
+      });
     });
   }
 
