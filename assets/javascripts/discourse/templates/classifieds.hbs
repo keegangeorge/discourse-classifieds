@@ -13,43 +13,50 @@
   </div>
 </header>
 
-{{#if (eq this.viewStyle "grid")}}
-  <div class="listing-gallery-container">
-    {{#each classifieds as |listing|}}
-      <ListingItem @listing={{listing}} />
-    {{/each}}
-  </div>
-{{else if (eq this.viewStyle "list")}}
-  <table class="table classified-listing-table">
-    <thead>
-      <tr>
-        <th class="listing-cover-image-header">
-          {{i18n "discourse_classifieds.listing_table.header.image"}}
-        </th>
-        <th class="listing-title-header">
-          {{i18n "discourse_classifieds.listing_table.header.title"}}
-        </th>
-        <th class="listing-price-header">
-          {{i18n "discourse_classifieds.listing_table.header.price"}}
-        </th>
-        <th class="listing-status-header">
-          {{i18n "discourse_classifieds.listing_table.header.status"}}
-        </th>
-        <th class="listing-location-header">
-          {{i18n "discourse_classifieds.listing_table.header.location"}}
-        </th>
-        <th class="listing-condition-header">
-          {{i18n "discourse_classifieds.listing_table.header.condition"}}
-        </th>
-        <th class="listing-creator-header">
-          {{i18n "discourse_classifieds.listing_table.header.creator"}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
+{{#if classifieds}}
+  {{#if (eq this.viewStyle "grid")}}
+    <div class="listing-gallery-container">
       {{#each classifieds as |listing|}}
-        <ListingTableItem @listing={{listing}} />
+        <ListingItem @listing={{listing}} />
       {{/each}}
-    </tbody>
-  </table>
+    </div>
+  {{else if (eq this.viewStyle "list")}}
+    <table class="table classified-listing-table">
+      <thead>
+        <tr>
+          <th class="listing-cover-image-header">
+            {{i18n "discourse_classifieds.listing_table.header.image"}}
+          </th>
+          <th class="listing-title-header">
+            {{i18n "discourse_classifieds.listing_table.header.title"}}
+          </th>
+          <th class="listing-price-header">
+            {{i18n "discourse_classifieds.listing_table.header.price"}}
+          </th>
+          <th class="listing-status-header">
+            {{i18n "discourse_classifieds.listing_table.header.status"}}
+          </th>
+          <th class="listing-location-header">
+            {{i18n "discourse_classifieds.listing_table.header.location"}}
+          </th>
+          <th class="listing-condition-header">
+            {{i18n "discourse_classifieds.listing_table.header.condition"}}
+          </th>
+          <th class="listing-creator-header">
+            {{i18n "discourse_classifieds.listing_table.header.creator"}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each classifieds as |listing|}}
+          <ListingTableItem @listing={{listing}} />
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+
+{{else}}
+
+  <div class="alert alert-error">{{d-icon "exclamation-triangle"}}
+    {{i18n "discourse_classifieds.no_listings"}}</div>
 {{/if}}

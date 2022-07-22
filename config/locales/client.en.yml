@@ -4,6 +4,7 @@ en:
       title: "Classifieds"
       page_title: "Marketplace"
       page_description: "View for sale listings created by other members on the forum."
+      no_listings: "This forum does not have any listings currently. Create a topic with a listing to add a new listing."
       ui_builder:
         title: "Create a marketplace listing"
         create: "Create Listing"
